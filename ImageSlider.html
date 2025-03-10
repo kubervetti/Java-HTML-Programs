@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        #slider-container {
+            max-width: 500px;
+            margin: auto;
+            position: relative;
+        }
+        img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        #prev {
+            background-color: gray;
+            color: white;
+        }
+        #next {
+            background-color: blue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Image Slider</h2>
+    <div id="slider-container">
+        <img id="slider-image" src="" alt="Image Slider">
+    </div>
+    <br>
+    <button id="prev" class="btn" onclick="prevImage()">Previous</button>
+    <button id="next" class="btn" onclick="nextImage()">Next</button>
+
+    <script>
+     
+        let images = [
+            "https://images.unsplash.com/photo-1588844331099-8b2888da1e06?q=80&w=2137&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "https://images.unsplash.com/photo-1554263031-41f8f6dc413c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "https://images.unsplash.com/photo-1737903071772-4d20348b4d81?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "https://images.unsplash.com/photo-1490823670292-6699d9edbb7d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        ];
+
+        let currentIndex = 0; 
+
+        
+        function updateImage() {
+            document.getElementById("slider-image").src = images[currentIndex];
+        }
+
+        
+        updateImage();
+
+        
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateImage();
+        }
+
+        
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateImage();
+        }
+    </script>
+
+</body>
+</html>
